@@ -37,3 +37,17 @@ function displayGame(game) {
 		});
 	    container.appendChild(html);
 }
+
+
+// delete the game from API and refresh page
+function deleteGame(game) {
+	var id = game.getAttribute("game-id");
+	$.ajax({
+		url: apiGames + id,
+		method: "DELETE",
+		success: function(res) {
+			game.remove();
+			alert('The game was successfully deleted!');
+		}
+	});
+}
