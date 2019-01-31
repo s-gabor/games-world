@@ -8,6 +8,7 @@ function onHtmlLoaded() {
 	$.get(apiGames)
 		.then(function(games) {
 			for (var i = 0; i < games.length; i++) {
+				// console.log(games[i]);
 				displayGame(games[i]);
 			}
 		})
