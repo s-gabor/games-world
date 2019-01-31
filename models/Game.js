@@ -46,7 +46,7 @@ Game.prototype.deleteGame = function() {
 		url: apiGames + this._id,
 		method: 'DELETE',
 		success: function(response) {
-			console.log('Game deleted!', response);
+			console.log(response);
 		}
 	});
 }

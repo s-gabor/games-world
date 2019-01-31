@@ -8,7 +8,6 @@ function onHtmlLoaded() {
 	var games = new Games();
 	games.getGames()
 			.then(function(response) {
-					console.log('OnHtmlLoaded received: ', response);
 					displayGames(response);
 				})
 			.catch(function(err) {
@@ -41,11 +40,10 @@ function displayGame(game) {
     function deleteGame() {
 		var articleHtml = this.parentNode;
 		var id = articleHtml.getAttribute("data-id");
-		var gameObj = new Game({ _id: id });
+		var gameObj = new Game({ _id: game._id });
 		gameObj.deleteGame()
 			.then(
 				function(response) {
-			        console.log("DELETE response", response);
 			        articleHtml.remove();
 		    	},
 				function(error) {
@@ -68,7 +66,6 @@ function displayGame(game) {
 			$(field).addClass('edit-mode');
 		}
 		btn.addEventListener('click', function() {
-			console.log('clicked on save changes!');
 			// "for loop" is NOT optional(apparently) because PUT doesn't refresh the page automatically(apparently)
 			for (var field of editableFields) {
 				field.setAttribute('contenteditable', false);
@@ -79,12 +76,12 @@ function displayGame(game) {
 			var description = descriptionField.textContent;
 			var imageUrl = imageUrlField.getAttribute('src');
 			var id = article.getAttribute("game-id");
-			var game = new Game({_id: id});
-			game.updateGame({
-				title: title,
-				description: description,
-				imageUrl: imageUrl
-			});
+			var gameObj = new Game({_id: game._id, 
+									title: title,
+									description: description,
+									imageUrl: imageUrl
+									});
+			gameObj.updateGame();
 		})
 	}
 }
