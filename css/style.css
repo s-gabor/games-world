@@ -1,24 +1,36 @@
+body * { font-family: fantasy; }
+
+h1 {
+	text-align: center;
+	font-size: 2.5em;
+	text-shadow: 2px 2px lightgray;
+}
+
+button, input { font-family: 'Comic Sans MS'; }
+
 button {
 	text-align: center;
+	padding: 5px;
+	border-radius: 5px;
+	background-color: #ddd;
+	float: right;
+	margin: 15px;
 }
 
 .edit-mode {
 	background-color: #f0f5f5; 
 	border: 2px dotted #992600;
 }
+.btn-edit-mode { background-color: #00fc7c; }
+.btn-edit:hover { background-color: lightgreen; }
+.btn-delete:hover { background-color: #ff343c; }
 
-.btn-edit-mode {
-	background-color: lightgreen;
-}
-
-.center {
+.add-game {
 	display: grid;
 	justify-content: center;
 	padding: 50px;
-	/*border: 1px solid red;*/
 }
-
-.center > * {
+.add-game > * {
 	display: flex;
 	flex-wrap: nowrap;
 	align-self: center;
@@ -27,9 +39,14 @@ button {
 	margin: 5px;
 
 }
-.center > textarea {
-	height: 100px;
+.add-game > textarea { 
+	height: 100px; 
+	font-family: 'Comic Sans MS';
 }
-.center > button {
-	display: inline-block;
+.add-game > button { display: inline-block; }
+#btn-add-game:hover { background-color: #f59b13; }
+
+img {
+	width: 350px;
+	padding-right: 25px;
 }

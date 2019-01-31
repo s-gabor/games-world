@@ -28,10 +28,10 @@ function displayGame(game) {
     var html = document.createElement("article");
     html.setAttribute("game-id", game._id);
     html.innerHTML = `<h2> ${game.title} </h2>
-                      <p> ${game.description} </p>
+                      <img src='${game.imageUrl}'>
                       <button class="btn-edit">Edit game</button>
                       <button class="btn-delete">Delete game</button>
-                      <img src='${game.imageUrl}' width='500px' height='auto'>`;
+                      <p> ${game.description} </p><br>`;
     html.querySelector(".btn-edit").addEventListener("click", editGame);
     html.querySelector(".btn-delete").addEventListener("click", deleteGame);
     container.appendChild(html);
@@ -58,8 +58,8 @@ function displayGame(game) {
 		var btn = this;
 		switchToEditMode(btn);
 		var titleField = article.children[0];
-		var descriptionField = article.children[1];
-		var imageUrlField = article.children[4];
+		var descriptionField = article.children[4];
+		var imageUrlField = article.children[1];
 		var editableFields = [titleField, descriptionField];
 		for (var field of editableFields) {
 			field.setAttribute('contenteditable', true);
@@ -89,17 +89,17 @@ function displayGame(game) {
 // create an input article on "Add new game" click. Input from user: title, description and imageURL (id is created automatically by the API)
 document.getElementById('btn-add-game').addEventListener('click', function() {
 	var html = document.createElement("article");
-	html.innerHTML = `<input type="text" placeholder="add game title">
-					<textarea placeholder="add game description"></textarea>
-					<input type="text" placeholder="add image url">
+	html.innerHTML = `<input type="text" placeholder="  add game title">
+					<textarea placeholder="  add game description"></textarea>
+					<input type="text" placeholder="  add image url">
 					<button id="save-new-game"> Save game</button>`;
-	$(html).addClass('center');
+	$(html).addClass('add-game');
 	container.prepend(html);
 })
 
 
 // post the game with the user input
-$('#list-games').on('click', '.center button', function(event) {
+$('#list-games').on('click', '.add-game button', function(event) {
 	event.preventDefault();
 	var title = this.parentNode.children[0].value;
 	var description = this.parentNode.children[1].value;
